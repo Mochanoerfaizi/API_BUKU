@@ -1,34 +1,43 @@
-// models/User.js
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+'use strict';
+const { Model } = require('sequelize');
 
-const User = sequelize.define('User', {
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    static associate(models) {
+      // definisikan asosiasi di sini jika ada
+      User.hasMany(models.buku, { foreignKey: 'userId' }); // Contoh jika ada relasi ke buku
+    }
+  }
+  User.init({
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false
     },
     googleId: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: true // Bisa null jika tidak login via Google
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: true
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
+    name: { // Menggunakan 'name' bukan 'nama'
+      type: DataTypes.STRING,
+      allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
     },
     profilePic: {
-        type: DataTypes.STRING,
-        allowNull: true
+      type: DataTypes.STRING,
+      allowNull: true
     }
-}, {
-    timestamps: true // createdat dan updatedat otomatis
-});
-
-module.exports = User;
+    // Tidak ada kolom password di sini
+  }, {
+    sequelize,
+    modelName: 'User',
+    tableName: 'Users' // Eksplisit menyatakan nama tabel
+  });
+  return User;
+};

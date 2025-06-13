@@ -1,30 +1,24 @@
 'use strict';
 
-const { v4: uuidv4 } = require('uuid'); // Untuk membuat ID unik
-const bcrypt = require('bcrypt');     // Untuk enkripsi password. Pastikan sudah di-install.
+const { v4: uuidv4 } = require('uuid');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    
-    // Siapkan password yang akan di-hash
-    const hashedPassword = await bcrypt.hash('password123', 10);
-
-    // Siapkan data pengguna yang akan dimasukkan
-    await queryInterface.bulkInsert('Users', [ // Pastikan nama tabel adalah 'Users'
+    await queryInterface.bulkInsert('Users', [
       {
         id: uuidv4(),
-        name: 'User Satu', // Menggunakan 'name' sesuai model
+        name: 'User Satu',
         email: 'user1@example.com',
-        password: hashedPassword, // TAMBAHKAN KOLOM PASSWORD INI
+        // Tidak ada password
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: uuidv4(),
-        name: 'User Dua', // Menggunakan 'name' sesuai model
+        name: 'User Dua',
         email: 'user2@example.com',
-        password: hashedPassword, // TAMBAHKAN KOLOM PASSWORD INI
+        // Tidak ada password
         createdAt: new Date(),
         updatedAt: new Date()
       }
