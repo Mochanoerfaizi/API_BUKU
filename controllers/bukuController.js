@@ -1,4 +1,5 @@
-const Buku = require('../models/Buku');
+// BENAR: Ini mengambil model yang sudah diinisialisasi dari index.js
+const { Buku } = require('../models');
 const path = require('path');
 const fs = require('fs');
 

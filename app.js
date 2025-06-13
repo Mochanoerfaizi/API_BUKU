@@ -2,8 +2,8 @@
 require('dotenv').config(); // Pastikan ini di bagian paling atas
 const express = require('express');
 const { connectDB, sequelize } = require('./config/database');
-const User = require('./models/User'); // Import model User
-const Buku = require('./models/Buku'); // Import model Buku
+// BENAR: Impor terpusat dari index.js
+const { User, Buku } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const bukuRoutes = require('./routes/bukuRoutes');
 
