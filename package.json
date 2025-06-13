@@ -1,10 +1,10 @@
 {
   "name": "book-api",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "app.js", // <-- Ini sudah app.js
   "scripts": {
-    "start": "node server.js", 
-    "dev": "nodemon server.js"
+    "start": "node app.js", // <-- UBAH INI dari server.js menjadi app.js
+    "dev": "nodemon server.js" // dev bisa tetap server.js jika itu kebiasaan lokal Anda, atau ganti juga ke app.js
   },
   "keywords": [],
   "author": "",
