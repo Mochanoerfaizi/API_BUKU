@@ -8,26 +8,21 @@ module.exports = {
   // Fungsi `up` akan dijalankan saat Anda menjalankan seeder
   async up (queryInterface, Sequelize) {
     
-    // 1. Siapkan password yang akan di-hash
-    const password = 'password123';
-    const saltRounds = 10; // Tingkat kekuatan enkripsi
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    // 1. Siapkan password yang akan di-has
 
     // 2. Siapkan data pengguna yang akan dimasukkan
     await queryInterface.bulkInsert('Users', [ // Pastikan nama tabel adalah 'Users'
       {
         id: uuidv4(),
-        nama: 'User Satu',
+        name: 'User Satu',
         email: 'user1@example.com',
-        password: hashedPassword,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         id: uuidv4(),
-        nama: 'User Dua',
+        name: 'User Dua',
         email: 'user2@example.com',
-        password: hashedPassword, // Bisa menggunakan password yang sama untuk data dummy
         createdAt: new Date(),
         updatedAt: new Date()
       }
