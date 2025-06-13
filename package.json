@@ -2,10 +2,10 @@
   "name": "book-api",
   "version": "1.0.0",
   "main": "app.js",
- "scripts": {
-  "start": "node server.js", // atau app.js, index.js, sesuai nama file utama Anda
-  "dev": "nodemon server.js" // untuk development lokal
-},
+  "scripts": {
+    "start": "node server.js", // atau app.js, index.js, sesuai nama file utama Anda
+    "dev": "nodemon server.js" // untuk development lokal
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
