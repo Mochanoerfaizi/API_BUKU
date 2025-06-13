@@ -1,22 +1,15 @@
-# Tahap 1: Pilih Base Image
-FROM node:18-alpine
+# Tahap 1: Gunakan Base Image Standar (Non-Alpine)
+# Mengganti `node:18-alpine` dengan `node:18`. Image ini lebih besar tapi
+# jauh lebih kompatibel dengan package yang butuh kompilasi.
+# Ini adalah solusi paling umum untuk error `npm install` yang sulit dilacak.
+FROM node:18
 
 # Tahap 2: Atur Lingkungan Kerja
 WORKDIR /app
 
-# Tahap 3: Install System Dependencies & Dependensi Proyek
-RUN apk add --no-cache python3 make g++
-
-# Salin package.json
+# Tahap 3: Install Dependensi
 COPY package*.json ./
-
-# Jalankan npm install.
-# Jika ini gagal, perintah `||` akan menjalankan perintah berikutnya
-# yang akan menampilkan log error.
-RUN npm install || (cat /root/.npm/_logs/*.log && exit 1)
-
-# Hapus build-essentials setelah selesai
-RUN apk del python3 make g++
+RUN npm install
 
 # Tahap 4: Salin Kode Aplikasi
 COPY . .
@@ -25,4 +18,5 @@ COPY . .
 EXPOSE 3000
 
 # Tahap 6: Tentukan Perintah untuk Menjalankan Aplikasi
+# Pastikan skrip "start" di package.json Anda sudah menjalankan migrasi.
 CMD ["npm", "start"]

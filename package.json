@@ -2,6 +2,7 @@
   "name": "book-api",
   "version": "1.0.0",
   "main": "app.js",
+  "scripts": {
   "start": "npx sequelize-cli db:migrate && node server.js",
     "build": "echo 'Build step tidak lagi digunakan di Dockerfile'",
     "db:seed": "npx sequelize-cli db:seed:all",
