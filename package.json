@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js", // atau app.js, index.js, sesuai nama file utama Anda
-    "dev": "nodemon server.js" // untuk development lokal
+    "start": "node server.js", 
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
