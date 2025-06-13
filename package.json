@@ -2,15 +2,10 @@
   "name": "book-api",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "db:init": "npx sequelize init",
-    "db:migrate": "node -r dotenv/config node_modules/sequelize-cli/lib/sequelize db:migrate",
-    "db:migrate:undo": "node -r dotenv/config node_modules/sequelize-cli/lib/sequelize db:migrate:undo",
-    "db:migrate:undo:all": "node -r dotenv/config node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
-    "migration:generate": "npx sequelize migration:generate"
-  },
+ "scripts": {
+  "start": "node server.js", // atau app.js, index.js, sesuai nama file utama Anda
+  "dev": "nodemon server.js" // untuk development lokal
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
