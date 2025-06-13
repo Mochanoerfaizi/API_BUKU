@@ -1,0 +1,20 @@
+# Abaikan folder dependensi lokal. Ini yang paling penting!
+# Dependensi akan di-install di dalam kontainer.
+node_modules
+
+# Abaikan log error dari npm
+npm-debug.log
+
+# Abaikan file environment. Variabel ini harus dimasukkan saat runtime,
+# bukan disimpan permanen di dalam image. Ini sangat penting untuk keamanan.
+.env
+
+# Abaikan file dan folder yang berhubungan dengan Git, Docker, dan editor kode
+.git
+.gitignore
+Dockerfile
+.dockerignore
+
+# Opsional, tapi praktik yang baik: abaikan folder spesifik editor kode
+.vscode
+.idea
