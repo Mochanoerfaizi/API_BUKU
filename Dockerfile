@@ -5,16 +5,17 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Tahap 3: Install System Dependencies & Dependensi Proyek
-# Tambahkan build-essentials untuk package yang butuh kompilasi (seperti bcrypt)
 RUN apk add --no-cache python3 make g++
 
 # Salin package.json
 COPY package*.json ./
 
-# Jalankan npm install SEKARANG, setelah build tools tersedia
-RUN npm install
+# Jalankan npm install.
+# Jika ini gagal, perintah `||` akan menjalankan perintah berikutnya
+# yang akan menampilkan log error.
+RUN npm install || (cat /root/.npm/_logs/*.log && exit 1)
 
-# Hapus build-essentials setelah selesai untuk menjaga ukuran image tetap kecil
+# Hapus build-essentials setelah selesai
 RUN apk del python3 make g++
 
 # Tahap 4: Salin Kode Aplikasi
